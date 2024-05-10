@@ -2,17 +2,13 @@ const hourHand = document.querySelector(".hour"),
   minuteHand = document.querySelector(".minute");
 
 const updateTime = () => {
-  let date = randomDate(),
-    minToDeg = (date.getMinutes() / 60) * 360,
-    hrToDeg = (date.getHours() / 12) * 360;
+  let randomTime = Math.floor(Math.random() * 12 * 60), // 0 - 719
+    minToDeg = (randomTime % 60) * (360 / 60),
+    hrToDeg = (randomTime / 60) * (360 / 12);
 
   minuteHand.style.transform = `rotate(${minToDeg}deg)`;
   hourHand.style.transform = `rotate(${hrToDeg}deg)`;
 };
-
-const randomDate = () => {
-  return new Date(Math.floor(Math.random() * 60 * 60 * 24 * 1000) + 1);
-}
 
 updateTime();
 

@@ -52,12 +52,12 @@ body.dark {
   display: inline-block;
 }
 
-.clock label:not(.fine-tick) {
+.clock label:not(.fine-tick):not(.coarse-tick) {
   transform: rotate(calc(var(--i) * (360deg / 12)));
 }
-.clock label:not(.fine-tick) span {
+.clock label:not(.fine-tick):not(.coarse-tick) span {
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--black-color);
   transform: rotate(calc(90deg * var(--r))) rotate(calc(360deg * abs(var(--r) - 1) * var(--i) / 4));
 }
@@ -71,12 +71,26 @@ body.dark {
   transform: rotate(90deg);
 }
 
+.coarse-tick {
+  font-weight: 700;
+  font-size: 30px;
+  transform: rotate(calc(var(--i) * 90deg));
+}
+
+.coarse-tick span {
+  transform: rotate(90deg);
+}
+
 .container .indicator {
   position: absolute;
   height: 10px;
   width: 10px;
   display: flex;
   justify-content: center;
+}
+
+.number {
+  inset: 40px !important;
 }
 
 .indicator::before {
