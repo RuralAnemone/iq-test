@@ -61,6 +61,7 @@ body.dark {
   display: flex;
   justify-content: center;
 }
+
 .indicator::before {
   content: "";
   position: absolute;
@@ -69,8 +70,9 @@ body.dark {
   border-radius: 50%;
   z-index: 100;
   background: var(--black-color);
-  border: 4px solid var(--red-color);
+  border: 4px solid var(--black-color);
 }
+
 .indicator .hand {
   position: absolute;
   height: 130px;
@@ -80,24 +82,15 @@ body.dark {
   transform-origin: bottom;
   background: var(--red-color);
 }
+
 .hand.minute {
   height: 120px;
   width: 5px;
   background: var(--black-color);
 }
+
 .hand.hour {
   height: 100px;
   width: 8px;
   background: var(--black-color);
-}
-.mode-switch {
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 22px;
-  font-weight: 400;
-  display: inline-block;
-  color: var(--white-color);
-  background: var(--black-color);
-  box-shadow: 0 5px 10px rgb(0, 0, 0);
-  cursor: pointer;
 }
