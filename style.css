@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css3?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -41,19 +41,36 @@ body.dark {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 25px 45px rgba(0, 0, 0, 0.1);
   position: relative;
 }
+
 .clock label {
   position: absolute;
   inset: 20px;
   text-align: center;
-  transform: rotate(calc(var(--i) * (360deg / 12)));
 }
+
 .clock label span {
   display: inline-block;
+}
+
+.clock label:not(.fine-tick) {
+  transform: rotate(calc(var(--i) * (360deg / 12)));
+}
+.clock label:not(.fine-tick) span {
   font-size: 30px;
   font-weight: 600;
   color: var(--black-color);
+  transform: rotate(calc(90deg * var(--r))) rotate(calc(360deg * abs(var(--r) - 1) * var(--i) / 4));
+}
+
+.fine-tick {
+  font-size: 20px;
+  inset: 27px !important;
+}
+
+.fine-tick span {
   transform: rotate(90deg);
 }
+
 .container .indicator {
   position: absolute;
   height: 10px;
