@@ -117,7 +117,7 @@ body.dark {
 }
 
 .hand.minute {
-  height: 120px;
+  height: 140px;
   width: 5px;
   background: var(--black-color);
 }
