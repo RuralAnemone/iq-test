@@ -1,7 +1,26 @@
+// while (typeof submitButton == "undefined");
+let submitButton = document.querySelector(".submit");
+
+submitButton.addEventListener("mouseenter", () => {
+	submitButton.innerText = "submit!";
+});
+
+submitButton.addEventListener("mouseout", () => {
+	submitButton.innerText = "submit";
+});
+
+submitButton.addEventListener("click", () => {
+	localStorage.clock = JSON.stringify({
+		input: document.querySelector(".hour-input").value + ":" + document.querySelector(".minute-input").value,
+		correctAnswer: randomTime,
+	});
+	location = "/math";
+});
+
 const hourHand = document.querySelector(".hour"),
 	minuteHand = document.querySelector(".minute");
 
-const randomTime = Math.floor(Math.random() * 12 * 60); // 0 - 719
+let randomTime = Math.floor(Math.random() * 12 * 60); // 0 - 719
 
 const updateTime = () => {
 	let minToDeg = (randomTime % 60) * (360 / 60),
@@ -10,8 +29,6 @@ const updateTime = () => {
 	minuteHand.style.transform = `rotate(${minToDeg}deg)`;
 	hourHand.style.transform = `rotate(${hrToDeg}deg)`;
 };
-
-updateTime();
 
 const clockFace = document.querySelector(".clock");
 
@@ -25,11 +42,23 @@ for (let i = 0; i < 60; i++) {
 	clockFace.appendChild(tick);
 }
 
-const timeDisplay = document.querySelector(".time-display");
-const hours = Math.floor(randomTime / 60);
-const minutes = randomTime % 60;
-const hoursString = hours == 0 ? "12" : [] + hours;
-const minutesString = `${minutes < 10 ? "0" : ""}${minutes}`;
-timeDisplay.innerText = `${hoursString}:${minutesString}`;
+// const timeDisplay = document.querySelector(".time-display");
+// const hours = Math.floor(randomTime / 60);
+// const minutes = randomTime % 60;
+// const hoursString = hours == 0 ? "12" : [] + hours;
+// const minutesString = `${minutes < 10 ? "0" : ""}${minutes}`;
+// timeDisplay.innerText = `${hoursString}:${minutesString}`;
 
-const randomize = updateTime
+// when the user loses focus
+window.addEventListener("blur", () => {
+	document.title = "cheater (:";
+});
+
+// when the user's focus is back to your tab (website) again
+window.addEventListener("focus", () => {
+	document.title = "fun quiz!";
+	randomTime = Math.floor(Math.random() * 12 * 60);
+	updateTime();
+});
+
+updateTime();

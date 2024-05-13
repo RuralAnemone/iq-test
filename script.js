@@ -7,3 +7,7 @@ startButton.addEventListener("mouseenter", () => {
 startButton.addEventListener("mouseout", () => {
 	startButton.innerText = "start quiz";
 });
+
+startButton.addEventListener("click", () => {
+	localStorage.setItem("hasStartedQuiz", true);
+});
