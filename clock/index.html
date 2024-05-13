@@ -6,10 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>fun quiz!</title>
         <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="../global.css">
         <script src="./script.js" defer></script>
+        <script src="./quiz.js" defer></script>
+        <script src="../global.js"defer></script>
     </head>
     <body>
         <div class="form-container">
+            <h1>what time is displayed on the clock?</h1>
             <div class="clock-container">
                 <div class="clock">
                     <label style="--i: 1; --r: 1"><span>-</span></label>
@@ -34,7 +38,12 @@
                         <span class="hand minute"></span>
                     </div>
                 </div>
-                <p class="time-display"></p>
+                <div class="input-container">
+                    <input type="text">
+                    <p>:</p>
+                    <input type="text">
+                </div>
+                <button class="submit">submit</button>
             </div>
         </div>
     </body>

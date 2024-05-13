@@ -31,3 +31,5 @@ const minutes = randomTime % 60;
 const hoursString = hours == 0 ? "12" : [] + hours;
 const minutesString = `${minutes < 10 ? "0" : ""}${minutes}`;
 timeDisplay.innerText = `${hoursString}:${minutesString}`;
+
+const randomize = updateTime

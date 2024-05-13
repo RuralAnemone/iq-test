@@ -1,9 +1,9 @@
 let startButton = document.querySelector(".start")
 
-startButton.addEventListener("mouseenter", () => {
-	startButton.innerText = "start quiz!";
+submitButton.addEventListener("mouseenter", () => {
+	submitButton.innerText = "start quiz!";
 });
 
-startButton.addEventListener("mouseout", () => {
-	startButton.innerText = "start quiz";
+submitButton.addEventListener("mouseout", () => {
+	submitButton.innerText = "start quiz";
 });
