@@ -1,4 +1,5 @@
 let submitButton = document.querySelector(".submit");
+let ordinalSpan = document.querySelector(".ordinal");
 
 submitButton.addEventListener("mouseenter", () => {
 	submitButton.innerText = "submit!";
@@ -18,6 +19,21 @@ submitButton.addEventListener("click", () => {
 	} else alert("please enter a number");
 });
 
+function numToOrdinal(num) {
+	let suffix;
+	num = Math.abs(num);
+	if (num % 10 === 1 && num % 100 !== 11) {
+		suffix = "st";
+	} else if (num % 10 === 2 && num % 100 !== 12) {
+		suffix = "nd";
+	} else if (num % 10 === 3 && num % 100 !== 13) {
+		suffix = "rd";
+	} else {
+		suffix = "th";
+	}
+	return suffix;
+}
+
 // when the user loses focus
 window.addEventListener("blur", () => {
 	document.title = "cheater (:";
@@ -28,3 +44,8 @@ window.addEventListener("blur", () => {
 window.addEventListener("focus", () => {
 	document.title = "fun quiz!";
 });
+
+// document.querySelector(".answer").addEventListener("change", () => {
+setInterval(() => {
+	ordinalSpan.textContent = numToOrdinal(document.querySelector(".answer").value);
+}, 50);
