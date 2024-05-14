@@ -10,6 +10,6 @@ startButton.addEventListener("mouseout", () => {
 });
 
 startButton.addEventListener("click", () => {
-	if (gradeInput.value > 9 || gradeInput < 12 || gradeInput == "") alert("please enter a valid highschool grade")
+	if (gradeInput.value < 9 || gradeInput.value > 12 || gradeInput.value == "") alert("please enter a valid highschool grade")
 	localStorage.setItem("grade", gradeInput.value)
 });
