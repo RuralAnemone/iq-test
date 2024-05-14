@@ -26,14 +26,19 @@
 	display: inline-block;
 }
 
-.clock label:not(.fine-tick):not(.coarse-tick):not(.number) {
+.clock label:not(.fine-tick):not(.coarse-tick) {
 	transform: rotate(calc(var(--i) * (360deg / 12)));
 }
+
+.clock label.number span {
+	transform: rotate(calc(90deg * var(--i))) !important;
+}
+
 .clock label:not(.fine-tick):not(.coarse-tick) span {
 	font-size: 30px;
 	font-weight: 400;
 	color: var(--black-color);
-	transform: rotate(calc(90deg * var(--r))) rotate(calc(360deg * abs(var(--r) - 1) * var(--i) / 4));
+	transform: rotate(calc(90deg * var(--r)));
 }
 
 .fine-tick {
