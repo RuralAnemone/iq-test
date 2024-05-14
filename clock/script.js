@@ -10,11 +10,13 @@ submitButton.addEventListener("mouseout", () => {
 });
 
 submitButton.addEventListener("click", () => {
-	localStorage.clock = JSON.stringify({
-		input: document.querySelector(".hour-input").value + ":" + document.querySelector(".minute-input").value,
-		correctAnswer: randomTime,
-	});
-	location = "/lincoln";
+	if (document.querySelector(".hour-input").value != "" && minuteHand.value != "") {
+		localStorage.clock = JSON.stringify({
+			input: document.querySelector(".hour-input").value + ":" + document.querySelector(".minute-input").value,
+			correctAnswer: randomTime,
+		});
+		location = "/lincoln";
+	} else alert("please enter an answer")
 });
 
 const hourHand = document.querySelector(".hour"),

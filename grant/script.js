@@ -10,21 +10,22 @@ submitButton.addEventListener("mouseout", () => {
 
 submitButton.addEventListener("click", () => {
 	if (document.querySelector(".answer").value != "") {
-		localStorage.lincoln = JSON.stringify({
+		localStorage.grant = JSON.stringify({
 			input: document.querySelector(".answer").value,
 			correctAnswer: 16,
 		});
-		location = "/grant";
-	} else alert("please enter a number");
+		location = "/ur-done";
+	} else alert("please enter an answer");
 });
 
 // when the user loses focus
 window.addEventListener("blur", () => {
 	document.title = "cheater (:";
-	// alert("uh oh you maybe cheated ):");
+	// alert("why would you cheat on this question out of all of them");
 });
 
 // when the user's focus is back to your tab (website) again
 window.addEventListener("focus", () => {
 	document.title = "fun quiz!";
 });
+
