@@ -13,7 +13,7 @@ submitButton.addEventListener("mouseout", () => {
 submitButton.addEventListener("click", () => {
 	localStorage.math = JSON.stringify({
 		input: document.querySelector(".answer").value,
-		correctAnswer: firstNumber + [] + secondNumber, // I love js strings
+		correctAnswer: firstNumber + secondNumber,
 	});
 	location = "/clock";
 });
