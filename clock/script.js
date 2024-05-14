@@ -14,13 +14,14 @@ submitButton.addEventListener("click", () => {
 		input: document.querySelector(".hour-input").value + ":" + document.querySelector(".minute-input").value,
 		correctAnswer: randomTime,
 	});
-	location = "/math";
+	location = "/lincoln";
 });
 
 const hourHand = document.querySelector(".hour"),
 	minuteHand = document.querySelector(".minute");
 
-let randomTime = Math.floor(Math.random() * 12 * 60); // 0 - 719
+// let randomTime = Math.floor(Math.random() * 12 * 60); // 0 - 719
+let randomTime = randomBetween(0, 719);
 
 const updateTime = () => {
 	let minToDeg = (randomTime % 60) * (360 / 60),
@@ -57,7 +58,7 @@ window.addEventListener("blur", () => {
 // when the user's focus is back to your tab (website) again
 window.addEventListener("focus", () => {
 	document.title = "fun quiz!";
-	randomTime = Math.floor(Math.random() * 12 * 60);
+	randomTime = randomBetween(0, 719);
 	updateTime();
 });
 
