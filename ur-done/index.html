@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>fun quiz!</title>
-        <link rel="stylesheet" href="../global.css">
-    </head>
-    <body>
-        <div class="form-container" style="text-align: center;">
-            <h1 id="status" style="margin-bottom: 3px">uploading results...</h1>
-            <h6 class="close-tab" style="margin: 1em; font-style: italic; color: #aaaaaa">&nbsp;</h6>
-            <a href="https://http.cat/418" id="cat" target="_blank"><img src="https://http.cat/418.jpg" alt="HTTP Cat, status 418"></a>
 
-            <script>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fun quiz!</title>
+    <link rel="stylesheet" href="../global.css">
+</head>
+
+<body>
+    <div class="form-container" style="text-align: center;">
+        <h1 id="status" style="margin-bottom: 3px">uploading results...</h1>
+        <h6 class="close-tab" style="margin: 1em; font-style: italic; color: #aaaaaa">&nbsp;</h6>
+        <a href="https://http.cat/102" id="cat" target="_blank"><img src="https://http.cat/102.jpg"
+                alt="HTTP Cat, status 102"></a>
+
+        <script>
+            if (localStorage.getItem("hasSubmited") == true) {
+                document.getElementById('status').textContent = "you've already submitted your results, dingus!";
+                document.querySelector(".close-tab").textContent = "you may now close this tab";
+                document.title = "you're done";
+                setCat(208);
+            } else {
                 const headers = new Headers();
                 headers.append("Content-Type", "application/json");
 
@@ -41,6 +50,7 @@
 
                 fetch("https://eo9heh64occvm9c.m.pipedream.net", options)
                     .then(response => {
+                        localStorage.setItem("hasSubmited", true);
                         setCat(response.status);
                         if (!response.ok) {
                             throw new Error('Network response was not ok. Error: ' + response.status);
@@ -50,17 +60,20 @@
                     })
                     .catch(error => {
                         console.error('There has been a problem with your fetch operation:', error);
-                        setCat(0);
+                        // setCat(0);
+                        setCat(418);
                         document.getElementById("status").innerHTML = `encountered <code style="background: #aaa; font-family: 'Fira Code', monospace; padding-left: 0.5ex; padding-right: 0.5ex;">${error}</code> while trying to upload results`
                         document.title = "uh oh"
                     });
+            }
 
-                    function setCat(status) {
-                        document.getElementById("cat").href = `https://http.cat/status/${status}`
-                        document.getElementById("cat").querySelector("img").src = `https://http.cat/${status}.jpg`
-                        document.getElementById("cat").querySelector("img").alt = `HTTP Cat, status ${status}`
-                    }
-            </script>
-        </div>
-    </body>
+            function setCat(status) {
+                document.getElementById("cat").href = `https://http.cat/status/${status}`
+                document.getElementById("cat").querySelector("img").src = `https://http.cat/${status}.jpg`
+                document.getElementById("cat").querySelector("img").alt = `HTTP Cat, status ${status}`
+            }
+        </script>
+    </div>
+</body>
+
 </html>
