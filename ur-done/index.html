@@ -11,7 +11,7 @@
         <div class="form-container" style="text-align: center;">
             <h1 id="status" style="margin-bottom: 3px">uploading results...</h1>
             <h6 class="close-tab" style="margin: 1em; font-style: italic; color: #aaaaaa">&nbsp;</h6>
-            <a href="https://http.cat/418" id="cat" target="_blank"><img src="https://http.cat/418.jpg" alt="HTTP Cat"></a>
+            <a href="https://http.cat/418" id="cat" target="_blank"><img src="https://http.cat/418.jpg" alt="HTTP Cat, status 418"></a>
 
             <script>
                 const headers = new Headers();
@@ -41,8 +41,7 @@
 
                 fetch("https://eo9heh64occvm9c.m.pipedream.net", options)
                     .then(response => {
-                        document.getElementById("cat").href = `https://http.cat/status/${response.status}`
-                        document.getElementById("cat").querySelector("img").src = `https://http.cat/${response.status}.jpg`
+                        setCat(response.status);
                         if (!response.ok) {
                             throw new Error('Network response was not ok. Error: ' + response.status);
                         }
@@ -51,7 +50,16 @@
                     })
                     .catch(error => {
                         console.error('There has been a problem with your fetch operation:', error);
+                        setCat(0);
+                        document.getElementById("status").innerHTML = `encountered <code style="background: #aaa; font-family: 'Fira Code', monospace; padding-left: 0.5ex; padding-right: 0.5ex;">${error}</code> while trying to upload results`
+                        document.title = "uh oh"
                     });
+
+                    function setCat(status) {
+                        document.getElementById("cat").href = `https://http.cat/status/${status}`
+                        document.getElementById("cat").querySelector("img").src = `https://http.cat/${status}.jpg`
+                        document.getElementById("cat").querySelector("img").alt = `HTTP Cat, status ${status}`
+                    }
             </script>
         </div>
     </body>
