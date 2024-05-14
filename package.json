@@ -1,9 +1,11 @@
 {
-  "dependencies": {
-    "express": "^4.19.2",
-    "gapi": "^0.0.3"
-  },
-  "scripts": {
-    "start": "bun index.js"
-  }
+	"dependencies": {
+		"express": "^4.19.2",
+		"gapi": "^0.0.3",
+		"prettier": "^3.2.5"
+	},
+	"scripts": {
+		"start": "bun index.js",
+		"clean": "prettier . --write"
+	}
 }

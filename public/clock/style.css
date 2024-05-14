@@ -12,7 +12,9 @@
 	align-items: center;
 	justify-content: center;
 	background: var(--white-color);
-	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 25px 45px rgba(0, 0, 0, 0.1);
+	box-shadow:
+		0 15px 25px rgba(0, 0, 0, 0.1),
+		0 25px 45px rgba(0, 0, 0, 0.1);
 	position: relative;
 }
 
@@ -73,7 +75,7 @@
 }
 
 .indicator::before {
-	content: "";
+	content: '';
 	position: absolute;
 	height: 100%;
 	width: 100%;

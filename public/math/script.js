@@ -1,24 +1,24 @@
-let submitButton = document.querySelector(".submit");
-let problemText = document.querySelector(".problem").querySelector("p");
+let submitButton = document.querySelector('.submit');
+let problemText = document.querySelector('.problem').querySelector('p');
 let firstNumber,
 	secondNumber = 0;
 
-submitButton.addEventListener("mouseenter", () => {
-	submitButton.innerText = "submit!";
+submitButton.addEventListener('mouseenter', () => {
+	submitButton.innerText = 'submit!';
 });
 
-submitButton.addEventListener("mouseout", () => {
-	submitButton.innerText = "submit";
+submitButton.addEventListener('mouseout', () => {
+	submitButton.innerText = 'submit';
 });
 
-submitButton.addEventListener("click", () => {
-	if (document.querySelector(".answer").value != "") {
+submitButton.addEventListener('click', () => {
+	if (document.querySelector('.answer').value != '') {
 		localStorage.math = JSON.stringify({
-			input: document.querySelector(".answer").value,
+			input: document.querySelector('.answer').value,
 			correctAnswer: firstNumber + secondNumber,
 		});
-		location = "/clock";
-	} else alert("please enter an answer");
+		location = '/clock';
+	} else alert('please enter an answer');
 });
 
 function randomize() {
@@ -31,12 +31,12 @@ function randomize() {
 randomize();
 
 // when the user loses focus
-window.addEventListener("blur", () => {
-	document.title = "cheater (:";
+window.addEventListener('blur', () => {
+	document.title = 'cheater (:';
 });
 
 // when the user's focus is back to your tab (website) again
-window.addEventListener("focus", () => {
-	document.title = "fun quiz!";
+window.addEventListener('focus', () => {
+	document.title = 'fun quiz!';
 	randomize();
 });
