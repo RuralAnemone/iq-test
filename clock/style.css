@@ -26,7 +26,7 @@
 	display: inline-block;
 }
 
-.clock label:not(.fine-tick):not(.coarse-tick) {
+.clock label:not(.fine-tick):not(.coarse-tick):not(.number) {
 	transform: rotate(calc(var(--i) * (360deg / 12)));
 }
 .clock label:not(.fine-tick):not(.coarse-tick) span {

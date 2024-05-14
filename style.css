@@ -6,7 +6,15 @@
 	padding: 2rem;
 	border-radius: 10px;
 	font-size: 50px;
-	margin: auto;
+	/* margin: auto; */
+	text-align: center;
+}
+
+.grade {
+	margin: 3rem;
+	font-size: 50px;
+	font-family: 'Poppins';
+	width: 40%;
 	text-align: center;
 }
 
@@ -15,4 +23,5 @@ main {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	flex-direction: column;
 }
