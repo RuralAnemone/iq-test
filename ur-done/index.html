@@ -1,1 +1,52 @@
-congarts bro
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fun quiz!</title>
+        <link rel="stylesheet" href="../global.css">
+    </head>
+    <body>
+        <div class="form-container" style="text-align: center;">
+            <h1 id="status" style="margin-bottom: 3px">uploading results...</h1>
+            <h6 class="close-tab" style="margin: 1em; font-style: italic; color: #aaaaaa">&nbsp;</h6>
+            <div id="cat"><img src="https://http.cat/418.jpg" alt="HTTP Cat"></div>
+
+            <script>
+                const headers = new Headers();
+                headers.append("Content-Type", "application/json");
+
+                const body = {
+                    clock: localStorage.getItem("clock"),
+                    hiThere: "if you see this, you're cool (:",
+                    iMean: "unless you looked at the source code",
+                    then: "you're just moderately cool",
+                    "(:": "(:"
+
+                };
+
+                const options = {
+                    method: "POST",
+                    headers,
+                    mode: "cors",
+                    body: JSON.stringify(body),
+                };
+
+                fetch("https://eo9heh64occvm9c.m.pipedream.net", options)
+                    .then(response => {
+                        console.log(response)
+                        document.getElementById("cat").querySelector("img").src = `https://http.cat/${response.status}.jpg`
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok. Error: ' + response.status);
+                        }
+                        document.getElementById('status').textContent = "you're done, thanks!";
+                        document.querySelector(".close-tab").textContent = "you may now close this tab"
+                    })
+                    .catch(error => {
+                        console.error('There has been a problem with your fetch operation:', error);
+                    });
+            </script>
+        </div>
+    </body>
+</html>
