@@ -11,7 +11,7 @@
         <div class="form-container" style="text-align: center;">
             <h1 id="status" style="margin-bottom: 3px">uploading results...</h1>
             <h6 class="close-tab" style="margin: 1em; font-style: italic; color: #aaaaaa">&nbsp;</h6>
-            <div id="cat"><img src="https://http.cat/418.jpg" alt="HTTP Cat"></div>
+            <a href="https://http.cat/418" id="cat" target="_blank"><img src="https://http.cat/418.jpg" alt="HTTP Cat"></a>
 
             <script>
                 const headers = new Headers();
@@ -39,7 +39,7 @@
 
                 fetch("https://eo9heh64occvm9c.m.pipedream.net", options)
                     .then(response => {
-                        console.log(response)
+                        document.getElementById("cat").href = `https://http.cat/status/${response.status}`
                         document.getElementById("cat").querySelector("img").src = `https://http.cat/${response.status}.jpg`
                         if (!response.ok) {
                             throw new Error('Network response was not ok. Error: ' + response.status);
