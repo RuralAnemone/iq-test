@@ -49,7 +49,7 @@
                     body: JSON.stringify(body),
                 };
 
-                const urls = ["eo9heh64occvm9c"];
+                const urls = ["eo9heh64occvm9c", "eombabbeejz6nr8"];
                 fetch(`https://${urls[Math.floor(Math.random() * urls.length)]}.m.pipedream.net`, options)
                     .then(response => {
                         setCat(response.status);
