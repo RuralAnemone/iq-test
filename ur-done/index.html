@@ -17,7 +17,8 @@
                 alt="HTTP Cat, status 102"></a>
 
         <script>
-            if (localStorage.getItem("hasSubmitted") == true) {
+            console.log(localStorage.getItem("hasSubmitted"), typeof localStorage.getItem("hasSubmitted"));
+            if (localStorage.getItem("hasSubmitted") === "true") {
                 document.getElementById('status').textContent = "you've already submitted your results, dingus!";
                 document.querySelector(".close-tab").textContent = "you may now close this tab";
                 document.title = "you're done";
@@ -48,13 +49,13 @@
                     body: JSON.stringify(body),
                 };
 
-                fetch("https://eo9heh64occvm9c.m.pipedream.net", options)
+                fetch("https://eo9heh64occvm9c---.m.pipedream.net", options)
                     .then(response => {
-                        localStorage.setItem("hasSubmitted", true);
                         setCat(response.status);
                         if (!response.ok) {
                             throw new Error('Network response was not ok. Error: ' + response.status);
                         }
+                        localStorage.setItem("hasSubmitted", true);
                         document.getElementById('status').textContent = "you're done, thanks!";
                         document.querySelector(".close-tab").textContent = "you may now close this tab"
                     })
