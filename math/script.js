@@ -12,15 +12,15 @@ submitButton.addEventListener("mouseout", () => {
 
 submitButton.addEventListener("click", () => {
 	localStorage.math = JSON.stringify({
-		input: document.querySelector(".hour-input").value + ":" + document.querySelector(".minute-input").value,
-		correctAnswer: randomTime,
+		input: document.querySelector(".answer").value,
+		correctAnswer: firstNumber + [] + secondNumber, // I love js strings
 	});
 	location = "/clock";
 });
 
 function randomize() {
-	firstNumber = Math.floor(Math.random() * (99-10) + 10);
-	secondNumber= Math.floor(Math.random())
+	firstNumber = randomBetween(10, 99);
+	secondNumber= randomBetween(10, 99);
 }
 
 // when the user loses focus
