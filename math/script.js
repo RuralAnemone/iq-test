@@ -21,7 +21,11 @@ submitButton.addEventListener("click", () => {
 function randomize() {
 	firstNumber = randomBetween(10, 99);
 	secondNumber= randomBetween(10, 99);
+
+	problemText.textContent = `${firstNumber} + ${secondNumber}`;
 }
+
+randomize();
 
 // when the user loses focus
 window.addEventListener("blur", () => {

@@ -1,0 +1,21 @@
+.problem {
+	font-size: 50px;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.input-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.input-container > input {
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
+	font-size: 50px;
+	font-weight: 600;
+	width: 30%;
+	margin-bottom: 2rem;
+}
