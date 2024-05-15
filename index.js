@@ -31,17 +31,22 @@ expressApp.post('/upload', async (req, res) => {
 	res.status(202).send('data accepted');
 
 	try {
+		const data = transformData(req.body);
 		await client.create({
 			"id": "INCREMENT",
-			"name": "Mike Rotchburns",
-			"age": Math.floor(Math.random() * 10000 + 1),
-			"score": Math.floor(Math.random() * 100 + 1),
-			"address": JSON.stringify(req.body),
-			"email": "mikey@rotchburns.gov",
-			"lat": Math.random() * 180 - 90,
-			"lon": Math.random() * 360 - 180,
-			"img": "https://placebear.com/200/200"
-		}, "large");
+			"timestamp": "TIMESTAMP",
+			"math input": data.math.input,
+			"math correctAnswer": data.math.correctAnswer,
+			"clock input": data.clock.input,
+			"clock correctAnswer": data.clock.correctAnswer,
+			"clock input (string)": data.clockString.input,
+			"clock correctAnswer (string)": data.clockString.correctAnswer,
+			"lincoln input": data.lincoln.input,
+			"grant input": data.grant.input,
+			"grade": req.body.grade,
+			"timesCheated": req.body.timesCheated
+
+		}, "data");
 	} catch(error) {
 		console.error(error);
 		res.status(500).send(`Error: ${error.message}; ${JSON.stringify(error)}`);
@@ -55,4 +60,29 @@ expressApp.listen(PORT, () => {
 
 function transformData(data) {
 
+	const output = {} // "immutable" my ass
+
+	/*
+	const numToTimeStr = num => {
+		let hour = Math.floor(num / 60) + 1
+		let minute = num % 60
+		return `${hour}:${minute < 10 ? "0" : ""}${minute}`
+	}
+	*/
+  
+	output.clockString =JSON.parse(data.clock)
+	output.clock = {
+		input: clockStringToMinutes(output.clockString.input),
+		correctAnswer: clockStringToMinutes(output.clockString.correctAnswer)
+	}
+	output.math = JSON.parse(data.math)
+	output.lincoln = JSON.parse(data.lincoln)
+	output.grant = JSON.parse(data.grant)
+
+	return output
+}
+
+function clockStringToMinutes(clockString) {
+	const [hours, minutes] = clockString.split(':');
+	return +hours * 60 + +minutes;
 }
