@@ -15,7 +15,7 @@ submitButton.addEventListener('click', () => {
 			input: document.querySelector('.answer').value,
 			correctAnswer: 16,
 		});
-		location = '/grant';
+		location = '/grant/index.html';
 	} else alert('please enter a number');
 });
 
