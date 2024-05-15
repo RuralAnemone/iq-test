@@ -23,7 +23,7 @@ expressApp.post('/upload', async (req, res) => {
 	// try and catch errors
 
 	// if req.body is empty send 204, or if all fields are empty
-	if (Object.keys(req.body).length === 0 || Object.values(req.body).every( === ''){
+	if (Object.keys(req.body).length === 0 || Object.values(req.body).every(value => value === ''){
 		res.status(204).send('No data to append');
 		return;
 	}
