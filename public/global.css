@@ -39,6 +39,7 @@ body.dark {
 
 h1 {
 	margin: 2rem;
+	text-align: center;
 }
 
 button.submit {
