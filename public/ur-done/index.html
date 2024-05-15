@@ -32,7 +32,7 @@
 						lincoln: localStorage.getItem('lincoln'),
 						grant: localStorage.getItem('grant'),
 						grade: localStorage.getItem('grade'),
-						timesCheated: localStorage.getItem("timesCheated"),
+						timesCheated: localStorage.getItem('timesCheated'),
 
 						// hiThere: "if you see this, you're cool (:",
 						// iMean: "unless you looked at the source code",
@@ -48,7 +48,7 @@
 					};
 
 					fetch(`/upload`, options)
-					// fetch("/upload", options)
+						// fetch("/upload", options)
 						.then(response => {
 							setCat(response.status);
 							if (!response.ok) {
@@ -65,7 +65,7 @@
 							g = error;
 							setCat(error.message.match(/\d{3}/) ?? 418);
 							document.getElementById('status').innerHTML = `encountered <code style="background: #aaa; font-family: 'Fira Code', monospace; padding-left: 0.5ex; padding-right: 0.5ex;">${error}</code> while trying to upload results`;
-							document.querySelector('.close-tab').innerHTML = "click <a href='/'>here</a> to try again"
+							document.querySelector('.close-tab').innerHTML = "click <a href='/'>here</a> to try again";
 							document.title = 'uh oh';
 						});
 				}

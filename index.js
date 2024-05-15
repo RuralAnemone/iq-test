@@ -3,9 +3,9 @@ const path = require('path');
 const process = require('process');
 const sheetdb = require('sheetdb-node');
 
-const urls = process.env.SHEETDB_URLS.split(",");
+const urls = process.env.SHEETDB_URLS.split(',');
 
-const client = sheetdb({address:urls[Math.floor(Math.random() * urls.length)]});
+const client = sheetdb({ address: urls[Math.floor(Math.random() * urls.length)] });
 
 const expressApp = express();
 const publicPath = path.join(__dirname, 'public');
@@ -19,7 +19,6 @@ expressApp.use(express.static(publicPath));
 expressApp.use(express.json()); // Add this line to parse JSON bodies
 
 expressApp.post('/upload', async (req, res) => {
-
 	console.log(req.body);
 	// if req.body is empty send 204, or if all fields are empty
 	if (Object.keys(req.body).length === 0 || Object.values(req.body).some(value => value == null)) {
@@ -32,22 +31,24 @@ expressApp.post('/upload', async (req, res) => {
 
 	try {
 		const data = transformData(req.body);
-		await client.create({
-			"id": "INCREMENT",
-			"timestamp": "TIMESTAMP",
-			"math input": data.math.input,
-			"math correctAnswer": data.math.correctAnswer,
-			"clock input": data.clock.input,
-			"clock correctAnswer": data.clock.correctAnswer,
-			"clock input (string)": data.clockString.input,
-			"clock correctAnswer (string)": data.clockString.correctAnswer,
-			"lincoln input": data.lincoln.input,
-			"grant input": data.grant.input,
-			"grade": req.body.grade,
-			"timesCheated": req.body.timesCheated
-
-		}, "data");
-	} catch(error) {
+		await client.create(
+			{
+				id: 'INCREMENT',
+				timestamp: 'TIMESTAMP',
+				'math input': data.math.input,
+				'math correctAnswer': data.math.correctAnswer,
+				'clock input': data.clock.input,
+				'clock correctAnswer': data.clock.correctAnswer,
+				'clock input (string)': data.clockString.input,
+				'clock correctAnswer (string)': data.clockString.correctAnswer,
+				'lincoln input': data.lincoln.input,
+				'grant input': data.grant.input,
+				grade: req.body.grade,
+				timesCheated: req.body.timesCheated,
+			},
+			'data'
+		);
+	} catch (error) {
 		console.error(error);
 		res.status(500).send(`Error: ${error.message}; ${JSON.stringify(error)}`);
 	}
@@ -59,8 +60,7 @@ expressApp.listen(PORT, () => {
 });
 
 function transformData(data) {
-
-	const output = {} // "immutable" my ass
+	const output = {}; // "immutable" my ass
 
 	/*
 	const numToTimeStr = num => {
@@ -69,17 +69,17 @@ function transformData(data) {
 		return `${hour}:${minute < 10 ? "0" : ""}${minute}`
 	}
 	*/
-  
-	output.clockString =JSON.parse(data.clock)
+
+	output.clockString = JSON.parse(data.clock);
 	output.clock = {
 		input: clockStringToMinutes(output.clockString.input),
-		correctAnswer: clockStringToMinutes(output.clockString.correctAnswer)
-	}
-	output.math = JSON.parse(data.math)
-	output.lincoln = JSON.parse(data.lincoln)
-	output.grant = JSON.parse(data.grant)
+		correctAnswer: clockStringToMinutes(output.clockString.correctAnswer),
+	};
+	output.math = JSON.parse(data.math);
+	output.lincoln = JSON.parse(data.lincoln);
+	output.grant = JSON.parse(data.grant);
 
-	return output
+	return output;
 }
 
 function clockStringToMinutes(clockString) {
