@@ -3,7 +3,7 @@ const path = require('path');
 const process = require('process');
 const sheetdb = require('sheetdb-node');
 
-const client = sheetdb({address:"https://sheetdb.io/api/v1/58f61be4dda40"});
+const client = sheetdb({address:process.env.SHEETDB_URL});
 
 const expressApp = express();
 const publicPath = path.join(__dirname, 'public');
@@ -52,5 +52,5 @@ expressApp.listen(PORT, () => {
 });
 
 function transformData(data) {
-	
+
 }
