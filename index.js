@@ -21,6 +21,17 @@ expressApp.post('/upload', async (req, res) => {
 	// const message = req.body;
 	// await webhook(JSON.stringify(message));
 	// try and catch errors
+
+	// if req.body is empty send 204, or if all fields are empty
+	if (Object.keys(req.body).length === 0 || Object.values(req.body).every( === ''){
+		res.status(204).send('No data to append');
+		return;
+	}
+
+	console.log(req.body)
+
+	res.status(202).send('data accepted');
+
 	try {
 		// await webhook(JSON.stringify(message));
 		await appendDataToSheet({
