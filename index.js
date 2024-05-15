@@ -3,7 +3,9 @@ const path = require('path');
 const process = require('process');
 const sheetdb = require('sheetdb-node');
 
-const client = sheetdb({address:process.env.SHEETDB_URL});
+const urls = process.env.SHEETDB_URLS.split(",");
+
+const client = sheetdb({address:urls[Math.floor(Math.random() * urls.length)]});
 
 const expressApp = express();
 const publicPath = path.join(__dirname, 'public');
