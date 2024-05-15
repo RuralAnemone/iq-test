@@ -54,6 +54,7 @@
 							if (!response.ok) {
 								throw new Error('Network response was not ok. Error: ' + response.status);
 							}
+							if (response.status === 204) throw new Error('No content');
 							localStorage.setItem('hasSubmitted', true);
 							document.getElementById('status').textContent = "you're done, thanks!";
 							document.querySelector('.close-tab').textContent = 'you may now close this tab';

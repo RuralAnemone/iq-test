@@ -3,7 +3,7 @@ const path = require('path');
 const process = require('process');
 const sheetdb = require('sheetdb-node');
 
-const client = sheetdb({address:"https://sheetdb.io/api/v1/58f61be4dda40"});
+const client = sheetdb({address:"https://sheetdb.io/api/v1/58f61be4d----da40"});
 
 const expressApp = express();
 const publicPath = path.join(__dirname, 'public');
@@ -17,18 +17,12 @@ expressApp.use(express.static(publicPath));
 expressApp.use(express.json()); // Add this line to parse JSON bodies
 
 expressApp.post('/upload', async (req, res) => {
-	// res.status(202).send('accepted');
-	// const message = req.body;
-	// await webhook(JSON.stringify(message));
-	// try and catch errors
 
 	// if req.body is empty send 204, or if all fields are empty
 	if (Object.keys(req.body).length === 0 || Object.values(req.body).every(value => value == null)) {
 		res.status(204).send('No data to append');
 		return;
 	}
-
-	console.log(req.body)
 
 	res.status(202).send('data accepted');
 
