@@ -1,0 +1,10 @@
+{
+	"dependencies": {
+		"express": "^4.19.2",
+		"prettier": "^3.2.5"
+	},
+	"scripts": {
+		"start": "bun run index.js",
+		"format": "prettier --write ."
+	}
+}
