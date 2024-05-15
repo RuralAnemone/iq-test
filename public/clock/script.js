@@ -15,7 +15,7 @@ submitButton.addEventListener('click', () => {
 			input: document.querySelector('.hour-input').value + ':' + document.querySelector('.minute-input').value,
 			correctAnswer: randomTime,
 		});
-		location = '/lincoln';
+		location = '/lincoln/index.html';
 	} else alert('please enter an answer');
 });
 

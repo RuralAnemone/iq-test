@@ -14,7 +14,7 @@ submitButton.addEventListener('click', () => {
 			input: document.querySelector('.answer').value,
 			correctAnswer: 16,
 		});
-		location = '/ur-done';
+		location = '/ur-done/index.html';
 	} else alert('please enter an answer');
 });
 

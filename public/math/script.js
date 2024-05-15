@@ -17,7 +17,7 @@ submitButton.addEventListener('click', () => {
 			input: document.querySelector('.answer').value,
 			correctAnswer: firstNumber + secondNumber,
 		});
-		location = '/clock';
+		location = '/clock/index.html';
 	} else alert('please enter an answer');
 });
 
