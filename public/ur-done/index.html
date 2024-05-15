@@ -54,7 +54,7 @@
 							if (!response.ok) {
 								throw new Error('Network response was not ok. Error: ' + response.status);
 							}
-							if (response.status === 204) throw new Error('No content');
+							if (response.status === 204 || response.status === 206) throw new Error(`${response.status} ${response.statusText}`);
 							localStorage.setItem('hasSubmitted', true);
 							document.getElementById('status').textContent = "you're done, thanks!";
 							document.querySelector('.close-tab').textContent = 'you may now close this tab';
@@ -65,6 +65,7 @@
 							g = error;
 							setCat(error.message.match(/\d{3}/) ?? 418);
 							document.getElementById('status').innerHTML = `encountered <code style="background: #aaa; font-family: 'Fira Code', monospace; padding-left: 0.5ex; padding-right: 0.5ex;">${error}</code> while trying to upload results`;
+							document.querySelector('.close-tab').innerHTML = "click <a href='/'>here</a> to try again"
 							document.title = 'uh oh';
 						});
 				}

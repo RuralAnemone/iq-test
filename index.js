@@ -18,9 +18,11 @@ expressApp.use(express.json()); // Add this line to parse JSON bodies
 
 expressApp.post('/upload', async (req, res) => {
 
+	console.log(req.body);
 	// if req.body is empty send 204, or if all fields are empty
-	if (Object.keys(req.body).length === 0 || Object.values(req.body).every(value => value == null)) {
-		res.status(204).send('No data to append');
+	if (Object.keys(req.body).length === 0 || Object.values(req.body).some(value => value == null)) {
+		if (Object.values(req.body).every(value => value == null)) res.status(204).send('No data to append');
+		res.status(206).send('Some fields are empty');
 		return;
 	}
 
