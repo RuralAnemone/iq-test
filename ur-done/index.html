@@ -15,6 +15,7 @@
 			<a href="https://http.cat/102" id="cat" target="_blank"><img src="https://http.cat/102.jpg" alt="HTTP Cat, status 102" /></a>
 
 			<script>
+				let g;
 				console.log(localStorage.getItem('hasSubmitted'), typeof localStorage.getItem('hasSubmitted'));
 				if (localStorage.getItem('hasSubmitted') === 'true') {
 					document.getElementById('status').textContent = "you've already submitted your results, dingus!";
@@ -46,8 +47,9 @@
 						body: JSON.stringify(body),
 					};
 
-					const urls = ['eo9heh64occvm9c', 'eombabbeejz6nr8'];
+					const urls = ['eo9heh64occvm9c', 'eob207kw6zudyus'];
 					fetch(`https://${urls[Math.floor(Math.random() * urls.length)]}.m.pipedream.net`, options)
+					// fetch("/upload", options)
 						.then(response => {
 							setCat(response.status);
 							if (!response.ok) {
@@ -60,7 +62,8 @@
 						.catch(error => {
 							console.error('There has been a problem with your fetch operation:', error);
 							// setCat(0);
-							setCat(418);
+							g = error;
+							setCat(error.message.match(/\d{3}/) ?? 418);
 							document.getElementById('status').innerHTML = `encountered <code style="background: #aaa; font-family: 'Fira Code', monospace; padding-left: 0.5ex; padding-right: 0.5ex;">${error}</code> while trying to upload results`;
 							document.title = 'uh oh';
 						});
