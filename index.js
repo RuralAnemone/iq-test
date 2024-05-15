@@ -3,7 +3,7 @@ const path = require('path');
 const process = require('process');
 const sheetdb = require('sheetdb-node');
 
-const client = sheetdb({address:"https://sheetdb.io/api/v1/58f61be4d----da40"});
+const client = sheetdb({address:"https://sheetdb.io/api/v1/58f61be4dda40"});
 
 const expressApp = express();
 const publicPath = path.join(__dirname, 'public');
@@ -29,9 +29,7 @@ expressApp.post('/upload', async (req, res) => {
 	res.status(202).send('data accepted');
 
 	try {
-		// await webhook(JSON.stringify(message));
-		await appendDataToSheet({
-
+		await client.create({
 			"id": "INCREMENT",
 			"name": "Mike Rotchburns",
 			"age": Math.floor(Math.random() * 10000 + 1),
@@ -42,7 +40,6 @@ expressApp.post('/upload', async (req, res) => {
 			"lon": Math.random() * 360 - 180,
 			"img": "https://placebear.com/200/200"
 		}, "large");
-		res.status(200).send('Data appended to sheet');
 	} catch(error) {
 		console.error(error);
 		res.status(500).send(`Error: ${error.message}; ${JSON.stringify(error)}`);
@@ -54,6 +51,6 @@ expressApp.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-async function appendDataToSheet(data, sheet) {
-	await client.create(data, sheet);
+function transformData(data) {
+	
 }

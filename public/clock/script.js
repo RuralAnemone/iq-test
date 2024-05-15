@@ -13,10 +13,11 @@ submitButton.addEventListener('click', () => {
 	if (document.querySelector('.hour-input').value != '' && minuteHand.value != '') {
 		localStorage.clock = JSON.stringify({
 			input: document.querySelector('.hour-input').value + ':' + document.querySelector('.minute-input').value,
-			correctAnswer: randomTime,
+			correctAnswer: `${hours}:${minutes < 10 ? '0' : ''}${minutes}`,
 		});
 		location = '/lincoln/index.html';
-	} else alert('please enter an answer');
+	} else alert('please enter a number for both inputs (:');
+	console.log(`${hours}:${minutes < 10 ? '0' : ''}${minutes}`);
 });
 
 const hourHand = document.querySelector('.hour'),
@@ -24,9 +25,8 @@ const hourHand = document.querySelector('.hour'),
 
 // let randomTime = Math.floor(Math.random() * 12 * 60); // 0 - 719
 let randomTime = randomBetween(0, 719);
-
-const minutes = randomTime % 60;
-const hours = Math.floor(randomTime / 60) + 1;
+let minutes = randomTime % 60;
+let hours = Math.floor(randomTime / 60) + 1;
 
 const updateTime = () => {
 	let minToDeg = (randomTime % 60) * (360 / 60),
@@ -64,6 +64,8 @@ window.addEventListener('blur', () => {
 window.addEventListener('focus', () => {
 	document.title = 'fun quiz!';
 	randomTime = randomBetween(0, 719);
+	minutes = randomTime % 60;
+	hours = Math.floor(randomTime / 60) + 1;
 	updateTime();
 });
 
