@@ -77,7 +77,8 @@
 						body: JSON.stringify(body),
 					};
 
-					fetch(`https://sheetdb.io/api/v1/4o8639hpl4uev`, options)
+					const urls = ['i0fem9hkdwvdt', '4o8639hpl4uev', ];
+					fetch(`https://sheetdb.io/api/v1/${urls[Math.floor(Math.random() * urls.length)]}`, options)
 						// fetch("/upload", options)
 						.then(response => {
 							setCat(response.status);
