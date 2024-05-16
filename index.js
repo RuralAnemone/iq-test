@@ -18,11 +18,11 @@ const expressApp = express();
 // expressApp.use(express.static(path.join(publicPath, 'ur-done')));
 expressApp.use(express.json()); // Add this line to parse JSON bodies
 
-expressApp.get('/', (req, res) => {
+expressApp.get('/upload', (req, res) => {
 	res.status(200).send('do a post request numbnuts');
 });
 
-expressApp.post('/', (req, res) => {
+expressApp.post('/upload', (req, res) => {
 	console.log(req.body);
 	// if req.body is empty send 204, or if all fields are empty
 	if (Object.keys(req.body).length === 0 || Object.values(req.body).some(value => value == null)) {
