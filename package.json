@@ -5,7 +5,7 @@
 		"sheetdb-node": "^0.0.12"
 	},
 	"scripts": {
-		"start": "type bun &> /dev/null || curl -fsSL bun.sh/install | bash && bun run index.js",
+		"start": "node index.js",
 		"format": "prettier --write ."
 	}
 }
