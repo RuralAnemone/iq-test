@@ -5,6 +5,8 @@ function randomBetween(low, high) {
 	return Math.floor(Math.random() * (high - low + 1) + low);
 }
 
+if (!localStorage.getItem('timesCheated')) localStorage.setItem('timesCheated', 0);
+
 isCheating = false;
 
 window.addEventListener('blur', () => {
