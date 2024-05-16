@@ -47,7 +47,7 @@
 						body: JSON.stringify(body),
 					};
 
-					fetch(`http://127.0.0.1:3000`, options)
+					fetch(`/upload`, options)
 						// fetch("/upload", options)
 						.then(response => {
 							setCat(response.status);
