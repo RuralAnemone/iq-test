@@ -6,6 +6,7 @@
 	},
 	"scripts": {
 		"start": "bun run index.js",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"build": "echo hi"
 	}
 }

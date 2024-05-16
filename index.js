@@ -8,9 +8,9 @@ const urls = process.env.SHEETDB_URLS.split(',');
 const client = sheetdb({ address: urls[Math.floor(Math.random() * urls.length)] });
 
 const expressApp = express();
-const publicPath = path.join(__dirname, 'public');
+// const publicPath = path.join(__dirname, 'public');
 
-expressApp.use(express.static(publicPath));
+// expressApp.use(express.static(publicPath));
 // expressApp.use(express.static(path.join(publicPath, 'math')));
 // expressApp.use(express.static(path.join(publicPath, 'clock')));
 // expressApp.use(express.static(path.join(publicPath, 'lincoln')));
@@ -18,7 +18,11 @@ expressApp.use(express.static(publicPath));
 // expressApp.use(express.static(path.join(publicPath, 'ur-done')));
 expressApp.use(express.json()); // Add this line to parse JSON bodies
 
-expressApp.post('/upload', (req, res) => {
+expressApp.get('/', (req, res) => {
+	res.status(200).send('do a post request numbnuts');
+});
+
+expressApp.post('/', (req, res) => {
 	console.log(req.body);
 	// if req.body is empty send 204, or if all fields are empty
 	if (Object.keys(req.body).length === 0 || Object.values(req.body).some(value => value == null)) {
