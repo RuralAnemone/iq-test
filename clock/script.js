@@ -15,7 +15,7 @@ submitButton.addEventListener('click', () => {
 			input: document.querySelector('.hour-input').value + ':' + document.querySelector('.minute-input').value,
 			correctAnswer: `${hours}:${minutes < 10 ? '0' : ''}${minutes}`,
 		});
-		location = '/lincoln/index.html';
+		location = '/lincoln';
 	} else alert('please enter a number for both inputs (:');
 	console.log(`${hours}:${minutes < 10 ? '0' : ''}${minutes}`);
 });
