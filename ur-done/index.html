@@ -47,7 +47,7 @@
 						body: JSON.stringify(body),
 					};
 
-					fetch(`http://localhost:3000`, options)
+					fetch(`https://iq-test-server.vercel.app`, options)
 						// fetch("/upload", options)
 						.then(response => {
 							setCat(response.status);
