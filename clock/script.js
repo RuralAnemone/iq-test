@@ -10,15 +10,27 @@ submitButton.addEventListener('mouseout', () => {
 });
 
 submitButton.addEventListener('click', () => {
-	if (document.querySelector('.hour-input').value != '' && minuteHand.value != '') {
+	if (validateClockInput()) {
 		localStorage.clock = JSON.stringify({
 			input: document.querySelector('.hour-input').value + ':' + document.querySelector('.minute-input').value,
 			correctAnswer: `${hours}:${minutes < 10 ? '0' : ''}${minutes}`,
 		});
 		location = '/lincoln';
-	} else alert('please enter a number for both inputs (:');
+	} else alert('please enter a valid time (:');
 	console.log(`${hours}:${minutes < 10 ? '0' : ''}${minutes}`);
 });
+
+function validateClockInput() {
+	let out = true;
+	const hourInput = document.querySelector('.hour-input').value,
+		minuteInput = document.querySelector('.minute-input').value;
+	out &= !isNaN(hourInput) && !isNaN(minuteInput);
+	out &= hourInput != '';
+	out &= minuteInput.value != '';
+	out &= hourInput >= 1 && hourInput <= 12;
+	out &= minuteInput >= 0 && minuteInput <= 59;
+	return out;
+}
 
 const hourHand = document.querySelector('.hour'),
 	minuteHand = document.querySelector('.minute');
